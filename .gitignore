@@ -1,0 +1,29 @@
+# build artifacts
+build/
+visualization.*/addon.xml
+src/*.inc
+
+# Debian build files
+debian/changelog
+debian/files
+debian/*.log
+debian/*.substvars
+debian/.debhelper/
+debian/tmp/
+debian/kodi-visualization-*/
+obj-x86_64-linux-gnu/
+
+# editors and IDEs
+*.swp
+*~
+.idea/
+.vscode/
+.vs/
+
+# to prevent add after a "git format-patch VALUE" and "git add ." call
+/*.patch
+
+# General MacOS
+.DS_Store
+.AppleDouble
+.LSOverride

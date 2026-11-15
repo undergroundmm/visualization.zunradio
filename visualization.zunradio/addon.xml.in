@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon
+  id="visualization.zunradio"
+  version="21.0.1"
+  name="ZUN rádio scéna"
+  provider-name="Underground Media Management s.r.o.">
+  <requires>@ADDON_DEPENDS@</requires>
+  <extension
+    point="xbmc.player.musicviz"
+    library_@PLATFORM@="@LIBRARY_FILENAME@"/>
+  <extension point="xbmc.addon.metadata">
+    <platform>@PLATFORM@</platform>
+    <license>GPL-2.0-or-later</license>
+    <website>https://zunradio.cz/</website>
+    <email>info@undergroundmediamanagement.cz</email>
+    <summary lang="en_GB">Red dots and rings moving to the beat, as on zunradio.cz</summary>
+    <summary lang="cs_CZ">Červené tečky a kruhy v rytmu hudby jako na zunradio.cz</summary>
+    <description lang="en_GB">The full screen scene of ZUN radio: red dots, rings and waves on black that react to the bass and the highs of the music. Together with the ZUN radio add-on it shows the cover of the track on air in a red card that pulses with the bass, with the artist and title below. It works with any music.</description>
+    <description lang="cs_CZ">Scéna ZUN rádia přes celou obrazovku: červené tečky, kruhy a vlny na černé, které reagují na basy a výšky hudby. S doplňkem ZUN rádio ukazuje obal právě hrající skladby v červené kartě, která pulzuje s basy, pod ní interpreta a název. Funguje s jakoukoli hudbou.</description>
+    <news>21.0.1 (2026-11-15)
+- The red card is drawn only in the ZUN radio scene, no longer behind the skin menus
+21.0.0 (2026-11-08)
+- First version</news>
+    <assets>
+      <icon>resources/icon.png</icon>
+      <fanart>resources/fanart.jpg</fanart>
+    </assets>
+  </extension>
+</addon>

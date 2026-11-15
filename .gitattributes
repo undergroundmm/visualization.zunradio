@@ -1,0 +1,4 @@
+# Oficiální repozitář Kodi chce konce řádků LF; core.autocrlf by je při checkoutu převedl na CRLF.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
