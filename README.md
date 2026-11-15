@@ -4,7 +4,7 @@ The full screen scene of [ZUN rádio](https://zunradio.cz/) as a [Kodi](https://
 visualisation: red dots, rings and waves on black that move with the bass and the highs of any music.
 
 [![License: GPL-2.0-or-later](https://img.shields.io/badge/License-GPL%20v2+-blue.svg)](LICENSE.md)
-[![Build](https://github.com/undergroundmm/visualization.zunradio/actions/workflows/build.yml/badge.svg?branch=Omega)](https://github.com/undergroundmm/visualization.zunradio/actions/workflows/build.yml)
+[![Build](https://github.com/undergroundmm/visualization.zunradio/actions/workflows/build.yml/badge.svg?branch=Piers)](https://github.com/undergroundmm/visualization.zunradio/actions/workflows/build.yml)
 
 Together with the ZUN rádio add-on ([plugin.audio.zunradio](https://github.com/undergroundmm/plugin.audio.zunradio),
 in the official Kodi repository) it also draws the red card behind the cover of the track on air,
@@ -38,8 +38,8 @@ Use the branch that matches your Kodi version, and the same branch of Kodi.
 
 ### Linux
 
-1. `git clone --branch Omega https://github.com/xbmc/xbmc.git`
-2. `git clone --branch Omega https://github.com/undergroundmm/visualization.zunradio.git`
+1. `git clone --branch Piers https://github.com/xbmc/xbmc.git`
+2. `git clone --branch Piers https://github.com/undergroundmm/visualization.zunradio.git`
 3. `cd visualization.zunradio && mkdir build && cd build`
 4. `cmake -DADDONS_TO_BUILD=visualization.zunradio -DADDON_SRC_PREFIX=../.. -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=../../xbmc/kodi-build/addons -DPACKAGE_ZIP=1 ../../xbmc/cmake/addons`
 5. `make`

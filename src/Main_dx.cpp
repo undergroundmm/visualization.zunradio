@@ -58,8 +58,11 @@ public:
   explicit CVisualizationZun(const kodi::addon::IInstanceInfo& instance);
   ~CVisualizationZun() override;
 
-  bool Start(int channels, int samplesPerSec, int bitsPerSample,
-             const std::string& songName) override;
+  // Visualization API 5.0.0 (Kodi 22): Init and DeInit for the renderer, once per instance;
+  // AudioStart and AudioStop for every new stream, Render only between them
+  bool Init() override;
+  void DeInit() override;
+  bool AudioStart(int channels, int samplesPerSec, int bitsPerSample) override;
   void Render() override;
   bool IsDirty() override { return true; }
   bool GetPresets(std::vector<std::string>& presets) override
@@ -73,6 +76,7 @@ public:
 
 private:
   bool InitRendererObjects();
+  void ReleaseRendererObjects();
 
   zun::Scene m_scene;
   bool m_card = false;
@@ -93,17 +97,15 @@ private:
 
 CVisualizationZun::~CVisualizationZun()
 {
-  SafeRelease(m_blend);
-  SafeRelease(m_cViewPort);
-  SafeRelease(m_vBuffer);
-  SafeRelease(m_inputLayout);
-  SafeRelease(m_vShader);
-  SafeRelease(m_pShader);
-  SafeRelease(m_device);
+  ReleaseRendererObjects();
 }
 
 CVisualizationZun::CVisualizationZun(const kodi::addon::IInstanceInfo& instance)
   : CInstanceVisualization(instance)
+{
+}
+
+bool CVisualizationZun::Init()
 {
   m_width = static_cast<float>(Width());
   m_height = static_cast<float>(Height());
@@ -115,13 +117,30 @@ CVisualizationZun::CVisualizationZun(const kodi::addon::IInstanceInfo& instance)
   }
   if (!m_ok)
     kodi::Log(ADDON_LOG_ERROR, "Failed to create the DirectX objects");
+  return m_ok;
 }
 
-bool CVisualizationZun::Start(int channels, int samplesPerSec, int bitsPerSample,
-                              const std::string& songName)
+void CVisualizationZun::DeInit()
+{
+  m_ok = false;
+  ReleaseRendererObjects();
+}
+
+void CVisualizationZun::ReleaseRendererObjects()
+{
+  SafeRelease(m_blend);
+  SafeRelease(m_cViewPort);
+  SafeRelease(m_vBuffer);
+  SafeRelease(m_inputLayout);
+  SafeRelease(m_vShader);
+  SafeRelease(m_pShader);
+  SafeRelease(m_device);
+  m_context = nullptr;
+}
+
+bool CVisualizationZun::AudioStart(int channels, int samplesPerSec, int bitsPerSample)
 {
   (void)bitsPerSample;
-  (void)songName;
   m_scene.Start(channels, samplesPerSec);
   return true;
 }

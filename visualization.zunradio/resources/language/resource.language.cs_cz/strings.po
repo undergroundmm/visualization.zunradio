@@ -1,0 +1,29 @@
+# Kodi Media Center language file
+# Addon Name: ZUN rádio scéna
+# Addon id: visualization.zunradio
+# Addon Provider: Underground Media Management s.r.o.
+msgid ""
+msgstr ""
+"Project-Id-Version: KODI Addons\n"
+"Report-Msgid-Bugs-To: https://github.com/undergroundmm/visualization.zunradio/issues\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2026-11-15 12:00+0100\n"
+"Last-Translator: Underground Media Management s.r.o.\n"
+"Language-Team: Czech\n"
+"Language: cs_CZ\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+msgctxt "Addon Summary"
+msgid "Red dots and rings moving to the beat, as on zunradio.cz"
+msgstr "Červené tečky a kruhy v rytmu hudby jako na zunradio.cz"
+
+msgctxt "Addon Description"
+msgid "The full screen scene of ZUN radio: red dots, rings and waves on black that react to the bass and the highs of the music. It works with any music. In the scene of the ZUN radio add-on it also draws the red card around the cover of the track on air, pulsing with the bass. Choose it in Settings > Player > Music > Visualisation."
+msgstr "Scéna ZUN rádia přes celou obrazovku: červené tečky, kruhy a vlny na černé, které reagují na basy a výšky hudby. Funguje s jakoukoli hudbou. Ve scéně doplňku ZUN rádio navíc kreslí červenou kartu kolem obalu právě hrající skladby, která pulzuje s basy. Vyberte ji v Nastavení > Přehrávač > Hudba > Vizualizace."
+
+msgctxt "Addon Disclaimer"
+msgid "The ZUN radio name and logo belong to the operator of the station, Underground Media Management s.r.o."
+msgstr "Název a logo ZUN rádia patří provozovateli stanice, Underground Media Management s.r.o."

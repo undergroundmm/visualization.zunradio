@@ -41,9 +41,11 @@ public:
   }
   ~CVisualizationZun() override = default;
 
-  bool Start(int channels, int samplesPerSec, int bitsPerSample,
-             const std::string& songName) override;
-  void Stop() override;
+  // Visualization API 5.0.0 (Kodi 22): Init and DeInit for the renderer, once per instance;
+  // AudioStart and AudioStop for every new stream, Render only between them
+  bool Init() override;
+  void DeInit() override;
+  bool AudioStart(int channels, int samplesPerSec, int bitsPerSample) override;
   void Render() override;
   bool IsDirty() override { return true; }
   bool GetPresets(std::vector<std::string>& presets) override
@@ -69,11 +71,8 @@ private:
   bool m_startOK = false;
 };
 
-bool CVisualizationZun::Start(int channels, int samplesPerSec, int bitsPerSample,
-                              const std::string& songName)
+bool CVisualizationZun::Init()
 {
-  (void)bitsPerSample;
-  (void)songName;
   const std::string frag = kodi::addon::GetAddonPath("resources/shaders/" GL_TYPE_STRING "/frag.glsl");
   const std::string vert = kodi::addon::GetAddonPath("resources/shaders/" GL_TYPE_STRING "/vert.glsl");
   if (!LoadShaderFiles(vert, frag) || !CompileAndLink())
@@ -81,13 +80,19 @@ bool CVisualizationZun::Start(int channels, int samplesPerSec, int bitsPerSample
     kodi::Log(ADDON_LOG_ERROR, "Failed to create or compile the shaders");
     return false;
   }
-  m_scene.Start(channels, samplesPerSec);
   glGenBuffers(1, &m_vbo);
   m_startOK = true;
   return true;
 }
 
-void CVisualizationZun::Stop()
+bool CVisualizationZun::AudioStart(int channels, int samplesPerSec, int bitsPerSample)
+{
+  (void)bitsPerSample;
+  m_scene.Start(channels, samplesPerSec);
+  return true;
+}
+
+void CVisualizationZun::DeInit()
 {
   if (!m_startOK)
     return;
